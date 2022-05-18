@@ -10,8 +10,8 @@
     "checkchange": "beachball check",
     "clean": "lage clean",
     "docs": "lage docs",
-    "format": "./node_modules/.bin/prettier --write './**/src/**/*'",
-    "format:check": "./node_modules/.bin/prettier --check './**/src/**/*'",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "prepare": "husky install",
     "release": "beachball publish",
     "test": "lage test"

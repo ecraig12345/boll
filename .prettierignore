@@ -1,2 +1,10 @@
-packages/docs/src
-fixtures
+.husky/
+apidocs/
+dist/
+fixtures/
+node_modules/
+
+.gitignore
+.prettierignore
+CHANGELOG.*
+yarn.lock
