@@ -4,7 +4,6 @@ dist/
 fixtures/
 node_modules/
 
-.gitignore
-.prettierignore
+.*ignore
 CHANGELOG.*
 yarn.lock
