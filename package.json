@@ -1,26 +1,24 @@
 {
-  "author": "JD Huntington <jdh@microsoft.com>",
+  "name": "boll-repo",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "repository": "https://github.com/microsoft/boll.git",
+  "scripts": {
+    "build": "lage build",
+    "change": "beachball change",
+    "checkchange": "beachball check",
+    "clean": "lage clean",
+    "docs": "lage docs",
+    "format": "./node_modules/.bin/prettier --write './**/src/**/*'",
+    "format:check": "./node_modules/.bin/prettier --check './**/src/**/*'",
+    "release": "beachball publish",
+    "test": "lage test"
+  },
   "devDependencies": {
     "beachball": "^1.36.2",
-    "lerna": "^3.22.1"
+    "lage": "^0.41.0"
   },
-  "license": "MIT",
-  "main": "index.js",
-  "name": "boll",
-  "private": true,
-  "repository": "https://github.com/jdhuntington/boll.git",
-  "scripts": {
-    "build": "lerna run build --stream",
-    "change": "beachball change -b origin/main",
-    "checkchange": "beachball check -b origin/main",
-    "clean": "lerna run clean --stream",
-    "docs": "lerna run docs --stream",
-    "format": "./node_modules/.bin/prettier --write './**/src/**/*'",
-    "lint": "./node_modules/.bin/prettier --check './**/src/**/*'",
-    "release": "beachball publish -b origin/main",
-    "test": "lerna run test --stream"
-  },
-  "version": "1.0.0",
   "workspaces": {
     "packages": [
       "packages/*"
