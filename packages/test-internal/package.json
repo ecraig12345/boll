@@ -5,12 +5,6 @@
   },
   "dependencies": {},
   "description": "@boll package used internally for shared testing logic",
-  "devDependencies": {
-    "@types/baretest": "^2.0.0",
-    "baretest": "^2.0.0",
-    "prettier": "^2.0.5",
-    "rimraf": "^3.0.2"
-  },
   "files": [
     "dist"
   ],
