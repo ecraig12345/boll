@@ -1,36 +1,34 @@
 {
-  "author": "JD Huntington <jdh@microsoft.com>",
+  "name": "@boll/rules-external-tools",
+  "version": "0.1.7",
+  "description": "@boll rules for typescript source files",
+  "homepage": "https://github.com/microsoft/boll#readme",
   "bugs": {
     "url": "https://github.com/microsoft/boll/issues"
   },
-  "dependencies": {
-    "@boll/core": "2.0.0",
-    "eslint": "^7.8.1"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/boll.git"
   },
-  "description": "@boll rules for typescript source files",
-  "devDependencies": {
-    "@boll/test-internal": "*"
-  },
+  "license": "MIT",
+  "main": "dist/index.js",
   "files": [
     "dist"
   ],
-  "gitHead": "684bc8b2aa4b06d5e24fe0badd6b9b0f7bd751f0",
-  "homepage": "https://github.com/microsoft/boll#readme",
-  "license": "MIT",
-  "main": "dist/index.js",
-  "name": "@boll/rules-external-tools",
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/microsoft/boll.git"
-  },
   "scripts": {
     "build": "tsc",
     "clean": "rimraf ./dist",
     "docs": "typedoc --out ./apidocs --theme markdown ./src",
     "test": "node dist/tests/all.test.js"
   },
-  "version": "0.1.7"
+  "dependencies": {
+    "@boll/core": "2.0.0",
+    "eslint": "^7.8.1"
+  },
+  "devDependencies": {
+    "@boll/test-internal": "*"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

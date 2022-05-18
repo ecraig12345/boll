@@ -1,44 +1,42 @@
 {
-  "author": "JD Huntington <jdh@microsoft.com>",
-  "bin": {
-    "boll": "./bin/boll.js"
-  },
+  "name": "@boll/cli",
+  "version": "1.2.1",
+  "description": "> TODO: description",
+  "homepage": "https://github.com/microsoft/boll#readme",
   "bugs": {
     "url": "https://github.com/microsoft/boll/issues"
   },
-  "dependencies": {
-    "@boll/core": "2.0.0",
-    "argparse": "^1.0.10",
-    "yaml": "^1.10.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/boll.git"
   },
-  "peerDependencies": {
-    "typescript": ">=4.3.0"
-  },
-  "description": "> TODO: description",
-  "devDependencies": {
-    "@boll/test-internal": "*"
+  "license": "MIT",
+  "main": "dist/cli.js",
+  "bin": {
+    "boll": "./bin/boll.js"
   },
   "files": [
     "bin",
     "dist"
   ],
-  "gitHead": "684bc8b2aa4b06d5e24fe0badd6b9b0f7bd751f0",
-  "homepage": "https://github.com/microsoft/boll#readme",
-  "license": "MIT",
-  "main": "dist/cli.js",
-  "name": "@boll/cli",
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/microsoft/boll.git"
-  },
   "scripts": {
     "build": "tsc",
     "clean": "rimraf ./dist",
     "docs": "typedoc --out ./apidocs --theme markdown ./src/*.ts",
     "test": "node dist/tests/all.test.js"
   },
-  "version": "1.2.1"
+  "dependencies": {
+    "@boll/core": "2.0.0",
+    "argparse": "^1.0.10",
+    "yaml": "^1.10.0"
+  },
+  "devDependencies": {
+    "@boll/test-internal": "*"
+  },
+  "peerDependencies": {
+    "typescript": ">=4.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

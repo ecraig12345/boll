@@ -1,25 +1,17 @@
 {
-  "author": "JD Huntington <jdh@microsoft.com>",
+  "name": "@boll/docs",
+  "version": "0.0.16",
+  "private": true,
+  "description": "> TODO: description",
+  "homepage": "https://github.com/microsoft/boll#readme",
   "bugs": {
     "url": "https://github.com/microsoft/boll/issues"
   },
-  "description": "> TODO: description",
-  "devDependencies": {
-    "@boll/cli": "*",
-    "@boll/core": "*",
-    "@boll/rules-core": "*",
-    "@boll/rules-external-tools": "*",
-    "@boll/rules-typescript": "*"
-  },
-  "gitHead": "684bc8b2aa4b06d5e24fe0badd6b9b0f7bd751f0",
-  "homepage": "https://github.com/microsoft/boll#readme",
-  "license": "MIT",
-  "name": "@boll/docs",
-  "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/microsoft/boll.git"
+    "url": "https://github.com/microsoft/boll.git"
   },
+  "license": "MIT",
   "scripts": {
     "build": "vuepress build src --dest dist",
     "dev": "vuepress dev src",
@@ -27,5 +19,11 @@
     "release": "yarn build && yarn upload",
     "upload": "gh-pages --dist dist --dotfiles"
   },
-  "version": "0.0.16"
+  "devDependencies": {
+    "@boll/cli": "*",
+    "@boll/core": "*",
+    "@boll/rules-core": "*",
+    "@boll/rules-external-tools": "*",
+    "@boll/rules-typescript": "*"
+  }
 }

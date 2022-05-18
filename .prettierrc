@@ -1,5 +1,6 @@
 {
+  "arrowParens": "avoid",
+  "plugins": ["prettier-plugin-packagejson"],
   "printWidth": 120,
-  "trailingComma": "none",
-  "arrowParens": "avoid"
+  "trailingComma": "none"
 }
