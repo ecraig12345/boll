@@ -16,7 +16,7 @@
     "test": "lage test"
   },
   "devDependencies": {
-    "beachball": "^1.36.2",
+    "beachball": "^2.22.2",
     "lage": "^0.41.0"
   },
   "workspaces": {
