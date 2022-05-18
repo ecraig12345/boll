@@ -1,12 +1,11 @@
 import * as assert from "assert";
-import baretest from "baretest";
-import { inFixtureDir } from "@boll/test-internal";
+import { baretest, inFixtureDir } from "@boll/test-internal";
 import { buildSuite } from "@boll/cli/dist/main";
 import { NullLogger } from "@boll/core";
 import { bootstrapRecommendedConfiguration } from "@boll/recommended";
-export const test: any = baretest("e2e");
+export const test = baretest("e2e");
 
-test.before(async () => {
+test.before(() => {
   bootstrapRecommendedConfiguration();
 });
 

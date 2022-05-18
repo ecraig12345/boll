@@ -1,13 +1,12 @@
 import * as assert from "assert";
-import baretest from "baretest";
+import { baretest, inFixtureDir } from "@boll/test-internal";
 import { NodeModulesReferenceDetector } from "../node-modules-reference-detector";
 import { asBollDirectory, getSourceFile, Package, ResultStatus, Failure } from "@boll/core";
-import { inFixtureDir } from "@boll/test-internal";
 
-export const test: any = baretest("Node modules reference detector");
+export const test = baretest("Node modules reference detector");
 
 test("Should pass if no references to node_modules exist in source code", async () => {
-  inFixtureDir("node-modules-references", __dirname, async () => {
+  await inFixtureDir("node-modules-references", __dirname, async () => {
     const sut = new NodeModulesReferenceDetector();
     const result = await sut.check(
       await getSourceFile(asBollDirectory("."), "node-modules-reference-none.ts", new Package({}, {}))
@@ -18,7 +17,7 @@ test("Should pass if no references to node_modules exist in source code", async 
 });
 
 test("Should fail if references to node_modules exist in source code", async () => {
-  inFixtureDir("node-modules-references", __dirname, async () => {
+  await inFixtureDir("node-modules-references", __dirname, async () => {
     const sut = new NodeModulesReferenceDetector();
     const result = await sut.check(
       await getSourceFile(asBollDirectory("."), "node-modules-reference.ts", new Package({}, {}))

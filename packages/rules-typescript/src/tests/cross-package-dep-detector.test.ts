@@ -1,11 +1,10 @@
 import * as assert from "assert";
-import baretest from "baretest";
+import { baretest, inFixtureDir } from "@boll/test-internal";
 import { CrossPackageDependencyDetector } from "../cross-package-dependency-detector";
 import { asBollDirectory, asBollFile, getSourceFile, Failure, Package, ResultStatus } from "@boll/core";
-import { inFixtureDir } from "@boll/test-internal";
-export const test: any = baretest("Cross package dependency detector");
+export const test = baretest("Cross package dependency detector");
 
-test("Should pass if no cross-package dependencies detected", async () => {
+test("Should pass if no cross-package dependencies detected", () => {
   const importPaths = [
     { path: "./foo", lineNumber: 0 },
     { path: "./foo/bar", lineNumber: 1 }
@@ -16,7 +15,7 @@ test("Should pass if no cross-package dependencies detected", async () => {
   assert.strictEqual(ResultStatus.success, result[0].status);
 });
 
-test("Should fail if cross-package dependency detected", async () => {
+test("Should fail if cross-package dependency detected", () => {
   const importPaths = [
     { path: "./foo", lineNumber: 0 },
     { path: "./foo/bar", lineNumber: 1 },

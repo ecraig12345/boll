@@ -1,11 +1,10 @@
 import * as assert from "assert";
-import baretest from "baretest";
-import { inTmpDir } from "@boll/test-internal";
+import { inTmpDir, baretest } from "@boll/test-internal";
 import { Cli } from "../cli";
 import { existsSync } from "fs";
 import { NullLogger } from "@boll/core";
 
-export const test: any = baretest("CLI");
+export const test = baretest("CLI");
 
 test("should create example config file when invoked with `init`", async () => {
   await inTmpDir(async () => {

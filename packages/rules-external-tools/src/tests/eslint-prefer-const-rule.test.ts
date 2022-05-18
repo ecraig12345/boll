@@ -1,10 +1,9 @@
 import * as assert from "assert";
-import baretest from "baretest";
+import { baretest, inFixtureDir } from "@boll/test-internal";
 import { ESLintPreferConstRule } from "../eslint-prefer-const-rule";
 import { asBollDirectory, getSourceFile, NullLogger, Package, ResultStatus } from "@boll/core";
-import { inFixtureDir } from "@boll/test-internal";
 
-export const test: any = baretest("ESLint Prefer Const");
+export const test = baretest("ESLint Prefer Const");
 
 test("Should succeed because prefer-const rule is set to 'error'", async () => {
   await inFixtureDir("configs/eslint/prefer-const", __dirname, async () => {

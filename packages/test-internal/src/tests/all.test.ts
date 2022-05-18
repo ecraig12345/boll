@@ -2,4 +2,4 @@ async function suite() {
   // stub
 }
 
-suite();
+void suite();

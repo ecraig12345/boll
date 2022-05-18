@@ -1,10 +1,9 @@
-import { inFixtureDir } from "@boll/test-internal";
 import * as assert from "assert";
-import baretest from "baretest";
+import { baretest, inFixtureDir } from "@boll/test-internal";
 import * as path from "path";
 import { GlobsForIgnorePattern, IgnoredFiles, IgnorePattern } from "../ignore";
 
-export const test: any = baretest("Ignore files");
+export const test = baretest("Ignore files");
 
 function assertArrayContentsEqual(actual: string[], expected: string[]) {
   actual.sort();

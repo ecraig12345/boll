@@ -1,10 +1,9 @@
 import * as assert from "assert";
-import baretest from "baretest";
+import { baretest, inFixtureDir } from "@boll/test-internal";
 import { TransitiveDependencyDetector } from "../transitive-dependency-detector";
 import { asBollDirectory, getSourceFile, Failure, Package, ResultStatus } from "@boll/core";
-import { inFixtureDir } from "@boll/test-internal";
 
-export const test: any = baretest("Transitive dep detector");
+export const test = baretest("Transitive dep detector");
 
 test("(dependencies only mode) Should fail if any references to packages not referenced in package", async () => {
   await inFixtureDir("transitive-reference", __dirname, async () => {
@@ -18,7 +17,7 @@ test("(dependencies only mode) Should fail if any references to packages not ref
   });
 });
 
-test("Should allow any modules given to the constructor", async () => {
+test("Should allow any modules given to the constructor", () => {
   const sut = new TransitiveDependencyDetector({ ignorePackages: ["util"] });
   assert.ok(sut.isValidImport({}, {}, "util"));
   assert.ok(!sut.isValidImport({}, {}, "fs"));

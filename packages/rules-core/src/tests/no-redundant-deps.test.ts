@@ -1,10 +1,9 @@
 import * as assert from "assert";
-import baretest from "baretest";
+import { baretest, inFixtureDir } from "@boll/test-internal";
 import { NoRedundantDepsRule } from "../no-redundant-deps";
 import { asBollDirectory, getSourceFile, NullLogger, ResultStatus } from "@boll/core";
-import { inFixtureDir } from "@boll/test-internal";
 
-export const test: any = baretest("NoRedundantDepsTest");
+export const test = baretest("NoRedundantDepsTest");
 
 const sut = new NoRedundantDepsRule(NullLogger);
 const emptyPackageContentsStub = { dependencies: {}, devDependencies: {} };

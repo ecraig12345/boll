@@ -1,9 +1,9 @@
 import * as assert from "assert";
-import baretest from "baretest";
+import { baretest } from "@boll/test-internal";
 import { PackageConsistency } from "../package-consistency";
 import { asBollDirectory, asBollFile, FileContext, Package, ResultStatus } from "@boll/core";
 
-export const test: any = baretest("Package Consistency");
+export const test = baretest("Package Consistency");
 
 const sut = new PackageConsistency();
 

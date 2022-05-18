@@ -1,10 +1,9 @@
 import * as assert from "assert";
-import baretest from "baretest";
+import { baretest, inFixtureDir } from "@boll/test-internal";
 import { EnforceRationale } from "../enforce-rationale";
 import { asBollDirectory, getSourceFile, Result, ResultStatus } from "@boll/core";
-import { inFixtureDir } from "@boll/test-internal";
 
-export const test: any = baretest("Enforce Rationale");
+export const test = baretest("Enforce Rationale");
 
 const emptyPackageContentsStub = { dependencies: {}, devDependencies: {} };
 

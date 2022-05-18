@@ -1093,11 +1093,6 @@
   resolved "https://registry.yarnpkg.com/@types/argparse/-/argparse-1.0.38.tgz#a81fd8606d481f873a3800c6ebae4f1d768a56a9"
   integrity sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==
 
-"@types/baretest@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@types/baretest/-/baretest-2.0.0.tgz#756390ec91357377554abbc834759408e0d0fabf"
-  integrity sha512-Yd+47uRtX/4No0alCNnnzICDR7aO6GNfyqjAHmAwwZyH/Cht0WOZnnxao83M1W9utce5aPZhtQvdpvIFIJkniw==
-
 "@types/eslint@^7.2.2":
   version "7.2.3"
   resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-7.2.3.tgz#a3731b7584fe1a847a34e67ac57a556afd9b0c0e"

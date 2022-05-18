@@ -1,11 +1,10 @@
 import * as assert from "assert";
-import baretest from "baretest";
+import { baretest, inFixtureDir } from "@boll/test-internal";
 import { asBollDirectory, getSourceFile, asBollFile, Failure, Package, ResultStatus } from "@boll/core";
 import { SrcDetector } from "../src-detector";
-import { inFixtureDir } from "@boll/test-internal";
-export const test: any = baretest("Source detector");
+export const test = baretest("Source detector");
 
-test("Should pass if no `src` detected in imports", async () => {
+test("Should pass if no `src` detected in imports", () => {
   const importPaths = [
     { path: "a", lineNumber: 0 },
     { path: "b/c/d/e/f", lineNumber: 1 }
@@ -15,7 +14,7 @@ test("Should pass if no `src` detected in imports", async () => {
   assert.strictEqual(ResultStatus.success, result[0].status);
 });
 
-test("Should fail if `src` detected in imports", async () => {
+test("Should fail if `src` detected in imports", () => {
   const importPaths = [
     { path: "a/src/b", lineNumber: 0 },
     { path: "b/c/d/e/f", lineNumber: 1 }
@@ -26,7 +25,7 @@ test("Should fail if `src` detected in imports", async () => {
 });
 
 test("Should fail if references to `src` detected in imports", async () => {
-  inFixtureDir("src-detector", __dirname, async () => {
+  await inFixtureDir("src-detector", __dirname, async () => {
     const sut = new SrcDetector();
     const result = await sut.check(await getSourceFile(asBollDirectory("."), "src-detector.ts", new Package({}, {})));
     const failure = result[0] as Failure;

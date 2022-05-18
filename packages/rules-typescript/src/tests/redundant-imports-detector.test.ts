@@ -1,11 +1,10 @@
 import * as assert from "assert";
-import baretest from "baretest";
+import { baretest, inFixtureDir } from "@boll/test-internal";
 import { RedundantImportsDetector } from "../redundant-imports-detector";
 import { asBollDirectory, asBollFile, getSourceFile, Failure, Package, ResultStatus } from "@boll/core";
-import { inFixtureDir } from "@boll/test-internal";
-export const test: any = baretest("Redunant imports detector");
+export const test = baretest("Redunant imports detector");
 
-test("Should pass if no redundant import paths", async () => {
+test("Should pass if no redundant import paths", () => {
   const importPaths = [
     { path: "a", lineNumber: 0 },
     { path: "b/c/d/e/f", lineNumber: 1 },
@@ -16,7 +15,7 @@ test("Should pass if no redundant import paths", async () => {
   assert.strictEqual(ResultStatus.success, result[0].status);
 });
 
-test("Should fail if there are redundant import paths", async () => {
+test("Should fail if there are redundant import paths", () => {
   const importPaths = [
     { path: "a/b", lineNumber: 0 },
     { path: "b/c/d/e/f", lineNumber: 1 },

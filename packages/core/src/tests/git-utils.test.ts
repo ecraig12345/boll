@@ -1,12 +1,11 @@
-import { inFixtureDir } from "@boll/test-internal";
 import * as assert from "assert";
-import baretest from "baretest";
+import { baretest, inFixtureDir } from "@boll/test-internal";
 import * as path from "path";
 import { getIgnoreFiles, getRepoRoot } from "../git-utils";
 
-export const test: any = baretest("Git Utils");
+export const test = baretest("Git Utils");
 
-test("Should correctly parse repo root", async () => {
+test("Should correctly parse repo root", () => {
   const sut = getRepoRoot;
   const result = sut();
   assert.deepStrictEqual(result, path.resolve(process.cwd(), "../.."));

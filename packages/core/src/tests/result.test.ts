@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import baretest from "baretest";
+import { baretest, inFixtureDir } from "@boll/test-internal";
 import { Config } from "../config";
 import { ConfigRegistry } from "../config-registry";
 import { CheckConfiguration, PackageRule } from "../types";
@@ -8,17 +8,17 @@ import { Result } from "../result-set";
 import { RuleRegistry } from "../rule-registry";
 import { Failure } from "../result-set";
 import { asBollLineNumber } from "../boll-line-number";
-import { inFixtureDir } from "@boll/test-internal";
 import { TypescriptSourceGlob } from "../glob";
 import { FileContext } from "../file-context";
 
-export const test: any = baretest("Suite result");
+export const test = baretest("Suite result");
 
 class FakeRule implements PackageRule {
   name = "fakerule";
 
   constructor(public options: any = {}) {}
 
+  // eslint-disable-next-line @typescript-eslint/require-await
   async check(file: FileContext): Promise<Result[]> {
     return [new Failure(this.name, file.filename, asBollLineNumber(0), "Something went wrong.")];
   }

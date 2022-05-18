@@ -1,13 +1,12 @@
 import * as assert from "assert";
-import baretest from "baretest";
+import { baretest, inFixtureDir } from "@boll/test-internal";
 import { readFileSync } from "fs";
 import { UnusedDependencyDetector } from "../unused-dependency-detector";
 import { asBollDirectory, asBollFile, Failure, FileContext, Package, ResultStatus } from "@boll/core";
-import { inFixtureDir } from "@boll/test-internal";
 
-export const test: any = baretest("Unused dep detector");
+export const test = baretest("Unused dep detector");
 
-test("Should succeed because all declared dependencies are imported in code", async () => {
+test("Should succeed because all declared dependencies are imported in code", () => {
   const sut = new UnusedDependencyDetector({
     packageContextOverride: {
       dependencies: { foo: "0.0.1", bar: "0.0.2" },
@@ -21,7 +20,7 @@ test("Should succeed because all declared dependencies are imported in code", as
   assert.deepStrictEqual(results[0].status, ResultStatus.success);
 });
 
-test("Should succeed because all declared dependencies are imported in code (with more deps)", async () => {
+test("Should succeed because all declared dependencies are imported in code (with more deps)", () => {
   const sut = new UnusedDependencyDetector({
     packageContextOverride: {
       dependencies: {
@@ -49,7 +48,7 @@ test("Should succeed because all declared dependencies are imported in code (wit
   assert.deepStrictEqual(results[0].status, ResultStatus.success);
 });
 
-test("Should succeed because `baz` is excluded", async () => {
+test("Should succeed because `baz` is excluded", () => {
   const sut = new UnusedDependencyDetector({
     exclude: ["baz"],
     packageContextOverride: {
@@ -72,7 +71,7 @@ test("Should succeed because `baz` is excluded", async () => {
   assert.deepStrictEqual(results[0].status, ResultStatus.success);
 });
 
-test("Should succeed because all declared dependencies are imported in code and devDependencies are ignored", async () => {
+test("Should succeed because all declared dependencies are imported in code and devDependencies are ignored", () => {
   const sut = new UnusedDependencyDetector({
     ignoreDevDependencies: true,
     packageContextOverride: {
@@ -87,7 +86,7 @@ test("Should succeed because all declared dependencies are imported in code and 
   assert.deepStrictEqual(results[0].status, ResultStatus.success);
 });
 
-test("Should fail because baz is not used as an import", async () => {
+test("Should fail because baz is not used as an import", () => {
   const sut = new UnusedDependencyDetector({
     packageContextOverride: {
       dependencies: { foo: "0.0.1", bar: "0.0.2" },
@@ -112,7 +111,7 @@ test("Should fail because baz is not used as an import", async () => {
   );
 });
 
-test("Should fail because multiple deps are not used", async () => {
+test("Should fail because multiple deps are not used", () => {
   const sut = new UnusedDependencyDetector({
     packageContextOverride: {
       dependencies: {

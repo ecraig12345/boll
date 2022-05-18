@@ -7,7 +7,7 @@ import { test as SrcDetectorTest } from "./src-detector.test";
 import { test as TransitiveDependencyDetectorTest } from "./transitive-dependency-detector.test";
 import { test as UnusedDependencyDetectorTest } from "./unused-dependency-detector.test";
 
-suite(
+void suite(
   CrossPackageDepDetectorTest,
   NodeModulesReferenceDetectorTest,
   RedundantImportsDetectorTest,

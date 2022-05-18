@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import baretest from "baretest";
+import { baretest } from "@boll/test-internal";
 import { BollFile } from "../boll-file";
 import { Config } from "../config";
 import { ConfigRegistry } from "../config-registry";
@@ -8,13 +8,14 @@ import { NullLogger } from "../logger";
 import { Result } from "../result-set";
 import { RuleRegistry } from "../rule-registry";
 
-export const test: any = baretest("Config");
+export const test = baretest("Config");
 
 class FakeRule implements PackageRule {
   name = "fakerule";
 
   constructor(public options: any = {}) {}
 
+  // eslint-disable-next-line @typescript-eslint/require-await
   async check(): Promise<Result[]> {
     throw new Error("Method not implemented.");
   }
@@ -28,7 +29,7 @@ class FakeGlob implements FileGlob {
   include: string[] = [];
 }
 
-test("should allow multi-level inheritance of configs", () => {
+test("should allow multi-level inheritance of configs", async () => {
   const configRegistry = new ConfigRegistry();
   const ruleRegistry = new RuleRegistry();
   let called = false;
@@ -45,7 +46,7 @@ test("should allow multi-level inheritance of configs", () => {
   configRegistry.register({ name: "level3", extends: "level2" });
   const config = new Config(configRegistry, ruleRegistry, NullLogger);
   config.load({ extends: "level3" });
-  config.buildSuite();
+  await config.buildSuite();
   assert.ok(called, "Rule factory should have been invoked when creating suite.");
 });
 
@@ -59,7 +60,7 @@ test("should apply exclude/include across extended config", async () => {
   assert.deepStrictEqual(suite.ruleSets[0].fileGlob.exclude, ["testme"]);
 });
 
-test("gives options to factory function", () => {
+test("gives options to factory function", async () => {
   const configRegistry = new ConfigRegistry();
   const ruleRegistry = new RuleRegistry();
   let calledWithCorrectArgs = false;
@@ -73,7 +74,7 @@ test("gives options to factory function", () => {
   config.load({
     ruleSets: [{ fileLocator: new FakeGlob(), checks: { file: [{ rule: "foo", options: { bar: "baz" } }] } }]
   });
-  config.buildSuite();
+  await config.buildSuite();
   assert.ok(calledWithCorrectArgs, "Rule factory should have been invoked with correct args when creating suite.");
 });
 

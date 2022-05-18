@@ -1,9 +1,8 @@
 import * as assert from "assert";
-import baretest from "baretest";
+import { baretest, inFixtureDir } from "@boll/test-internal";
 import { getSourceFile } from "../file-context";
-import { inFixtureDir } from "@boll/test-internal";
 import { Package } from "../package";
-export const test: any = baretest("Source detector");
+export const test = baretest("Source detector");
 
 test("should keep track of a disabled rule in a FileContext", async () => {
   await inFixtureDir("standalone-source-files", __dirname, async cwd => {

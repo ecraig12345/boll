@@ -9,4 +9,4 @@ import { test as PragmaTest } from "./pragma.test";
 import { test as ResultTest } from "./result.test";
 import { test as SuiteTest } from "./suite.test";
 
-suite(ConfigTest, FormatTest, GitUtilsTest, GlobTest, IgnoreTest, PragmaTest, SuiteTest, ResultTest);
+void suite(ConfigTest, FormatTest, GitUtilsTest, GlobTest, IgnoreTest, PragmaTest, SuiteTest, ResultTest);
