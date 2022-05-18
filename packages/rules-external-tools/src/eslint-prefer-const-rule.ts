@@ -1,4 +1,4 @@
-import { PackageRule, FileContext, asBollFile, asBollLineNumber, Result, Success, Failure, Logger } from "@boll/core";
+import { PackageRule, FileContext, asBollLineNumber, Result, Success, Failure, Logger } from "@boll/core";
 import { ESLintRules } from "./eslint-config";
 
 const ruleName = "ESLintPreferConstRule";

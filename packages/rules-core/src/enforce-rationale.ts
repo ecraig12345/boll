@@ -20,6 +20,7 @@ export class EnforceRationale implements PackageRule {
     return ruleName;
   }
 
+  // eslint-disable-next-line @typescript-eslint/require-await
   async check(file: FileContext): Promise<Result[]> {
     if (extname(file.filename) !== ".json") {
       return [new Success(ruleName)];
@@ -55,7 +56,7 @@ export class EnforceRationale implements PackageRule {
         const isObjectArray = Array.isArray(entries) && entries.every(v => typeof v === "object");
         if (entries) {
           if (isPrimitiveArray) {
-            (entries as any[]).forEach(v => {
+            entries.forEach(v => {
               if (!rationaleEntries || !rationaleEntries[v]) {
                 failures.push(
                   new Failure(
@@ -68,7 +69,7 @@ export class EnforceRationale implements PackageRule {
               }
             });
           } else if (isObjectArray) {
-            (entries as any[]).forEach((v, i) => {
+            entries.forEach((v, i) => {
               if (!v["rationale"]) {
                 failures.push(
                   new Failure(

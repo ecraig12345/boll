@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import { ConfigGenerator } from "./config-generator";
-import { ArgumentDefaultsHelpFormatter, ArgumentParser } from "argparse";
+import { ArgumentParser } from "argparse";
 import { Config, configFileName, ConfigRegistryInstance, Logger, RuleRegistryInstance, Suite } from "@boll/core";
 import { promisify } from "util";
 import { resolve } from "path";
@@ -68,6 +68,7 @@ export class Cli {
       this.logger.error(`Unable to find ${fullConfigPath}; consider running "init" to create example config.`);
     }
     const config = new Config(ConfigRegistryInstance, RuleRegistryInstance, this.logger);
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     config.load(require(fullConfigPath));
     return await config.buildSuite();
   }

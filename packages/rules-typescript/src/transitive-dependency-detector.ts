@@ -49,6 +49,7 @@ export class TransitiveDependencyDetector implements PackageRule {
     return ruleName;
   }
 
+  // eslint-disable-next-line @typescript-eslint/require-await
   async check(file: FileContext): Promise<Result[]> {
     const imports = this.getModuleImports(file.source);
     return imports

@@ -5,7 +5,7 @@ import { resolve } from "path";
 const defaultIgnoreFileName = ".gitignore";
 
 let repoRoot: string | undefined = undefined;
-let ignoreFiles: { [cwd: string]: { [ignoreFileName: string]: string[] } } = {};
+const ignoreFiles: { [cwd: string]: { [ignoreFileName: string]: string[] } } = {};
 
 export function getRepoRoot(): string {
   if (repoRoot) {

@@ -11,8 +11,8 @@ export class FileContext {
   private _parsedIgnoreChecks = false;
   private _parsedIgnoreChecksByLine = false;
   private _ignoredChecks: string[] = [];
-  private _sourceFileLoaded: boolean = false;
-  private _sourceFile?: ts.SourceFile = undefined;
+  private _sourceFileLoaded = false;
+  private _sourceFile?: ts.SourceFile;
   private _ignoredChecksByLine: Map<number, string[]> = new Map();
 
   constructor(
@@ -23,6 +23,7 @@ export class FileContext {
   ) {}
 
   get source(): ts.SourceFile {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     if (this._sourceFileLoaded) return this._sourceFile!;
     this._sourceFile = ts.createSourceFile(this.filename, this.content, ts.ScriptTarget.ES5, true);
     this._sourceFileLoaded = true;
@@ -58,7 +59,7 @@ export class FileContext {
     if (this._parsedIgnoreChecksByLine) return this._ignoredChecksByLine;
     this.content.split(/\r?\n/).forEach((n, lineNumber) => {
       const trimmedNodeText = n.trim();
-      let ignoredChecks: string[] = [];
+      const ignoredChecks: string[] = [];
 
       trimmedNodeText.match(/boll-disable-next-line.*/g)?.forEach(line => {
         const capture = line.match(/boll-disable-next-line\s([\w,\s-]*)/);

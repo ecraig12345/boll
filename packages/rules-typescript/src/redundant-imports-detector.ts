@@ -25,6 +25,7 @@ export class RedundantImportsDetector implements PackageRule {
     return ruleName;
   }
 
+  // eslint-disable-next-line @typescript-eslint/require-await
   async check(fileContext: FileContext): Promise<Result[]> {
     return this.checkImportPaths(fileContext.filename, this.getImportPaths(fileContext.source));
   }

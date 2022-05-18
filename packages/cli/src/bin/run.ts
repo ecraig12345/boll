@@ -8,4 +8,6 @@ async function doStuff() {
     process.exit(1);
   }
 }
-doStuff();
+doStuff().catch(() => {
+  process.exit(1);
+});

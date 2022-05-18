@@ -1,7 +1,7 @@
 import { Logger } from "./logger";
 import { Rule } from "./types";
 
-export type RuleDefinition<T extends Rule> = (logger: Logger, options?: {}) => T;
+export type RuleDefinition<T extends Rule> = (logger: Logger, options?: any) => T;
 
 export class RuleRegistry {
   public registrations: { [name: string]: RuleDefinition<Rule> } = {};

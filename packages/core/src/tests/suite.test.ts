@@ -3,7 +3,7 @@ import baretest from "baretest";
 import { getSourceFile } from "../file-context";
 import { inFixtureDir } from "@boll/test-internal";
 import { Package } from "../package";
-import { Failure, Result, ResultSet } from "../result-set";
+import { Failure, Result } from "../result-set";
 import { Suite } from "../suite";
 import { asBollLineNumber } from "../boll-line-number";
 export const test: any = baretest("Source detector");
@@ -20,7 +20,7 @@ test("should skip a single disabled next line rules in a FileContext", async () 
       "Failed due to MadeUpCheckName rule"
     );
     results.push(failure1);
-    const filteredResult = await suite.filterIgnoredChecksByLine(results, sut);
+    const filteredResult = suite.filterIgnoredChecksByLine(results, sut);
     assert.strictEqual(0, filteredResult.length);
   });
 });
@@ -51,7 +51,7 @@ test("should skip a multiple disabled next line rules in a FileContext", async (
       "Failed due to MadeUpCheckName rule"
     );
     results.push(failure2);
-    const filteredResult = await suite.filterIgnoredChecksByLine(results, sut);
+    const filteredResult = suite.filterIgnoredChecksByLine(results, sut);
     assert.strictEqual(0, filteredResult.length);
   });
 });

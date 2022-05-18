@@ -14,7 +14,7 @@ import {
   TransitiveDependencyDetector
 } from "@boll/rules-typescript";
 import { ESLintPreferConstRule } from "@boll/rules-external-tools";
-import { EnforceRationale, NoRedundantDepsRule, PackageConsistency } from "@boll/rules-core";
+import { EnforceRationale, NoRedundantDepsRule } from "@boll/rules-core";
 
 let bootstrapRun = false;
 export const bootstrapRecommendedConfiguration = () => {

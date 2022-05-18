@@ -7,7 +7,7 @@ export const test: any = baretest("Package Consistency");
 
 const sut = new PackageConsistency();
 
-function buildFileContext(packageContents: {}) {
+function buildFileContext(packageContents: any) {
   return new FileContext(
     asBollDirectory("foo/bar/baz"),
     new Package({}, {}),

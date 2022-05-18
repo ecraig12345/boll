@@ -14,12 +14,10 @@ import { FileContext } from "../file-context";
 
 export const test: any = baretest("Suite result");
 
-class FakeFile {}
-
 class FakeRule implements PackageRule {
-  name: string = "fakerule";
+  name = "fakerule";
 
-  constructor(public options: {} = {}) {}
+  constructor(public options: any = {}) {}
 
   async check(file: FileContext): Promise<Result[]> {
     return [new Failure(this.name, file.filename, asBollLineNumber(0), "Something went wrong.")];

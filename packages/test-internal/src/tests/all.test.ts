@@ -1,3 +1,5 @@
-async function suite() {}
+async function suite() {
+  // stub
+}
 
 suite();

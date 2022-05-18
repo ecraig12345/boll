@@ -35,19 +35,19 @@ export class Suite {
       sourceFilePaths.map(filename => getSourceFile(projectRoot, filename, packageContext))
     );
 
-    ruleSet.fileChecks.forEach(r => {
-      sourceFiles.forEach(async s => {
-        if (s.shouldSkip(r)) return;
+    for (const r of ruleSet.fileChecks) {
+      for (const s of sourceFiles) {
+        if (s.shouldSkip(r)) continue;
         const results = await r.check(s);
-        const filteredResults = await this.filterIgnoredChecksByLine(results, s);
+        const filteredResults = this.filterIgnoredChecksByLine(results, s);
         this.addFailuresWithSeverity(r, filteredResults, resultSet);
-      });
-    });
-    ruleSet.metaChecks.forEach(async r => {
+      }
+    }
+    for (const r of ruleSet.metaChecks) {
       const unskippedSourceFiles = sourceFiles.filter(s => !s.shouldSkip(r));
       const results = await r.check(unskippedSourceFiles);
       this.addFailuresWithSeverity(r, results, resultSet);
-    });
+    }
     return true;
   }
 
@@ -64,7 +64,7 @@ export class Suite {
     }
   }
 
-  async filterIgnoredChecksByLine(results: Result[], sourceFile: FileContext) {
+  filterIgnoredChecksByLine(results: Result[], sourceFile: FileContext) {
     const ignoredChecksByLine = sourceFile.ignoredChecksByLine;
     const filteredResults: Result[] = [];
     results.forEach(l => {

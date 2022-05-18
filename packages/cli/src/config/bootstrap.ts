@@ -2,4 +2,6 @@
  * bootstrap configurations for CLI
  * @deprecated
  */
-export const bootstrapConfigurations = () => {};
+export const bootstrapConfigurations = () => {
+  // no-op
+};

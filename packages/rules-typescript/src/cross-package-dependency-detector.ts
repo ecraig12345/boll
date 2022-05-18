@@ -28,6 +28,7 @@ export class CrossPackageDependencyDetector implements PackageRule {
     return ruleName;
   }
 
+  // eslint-disable-next-line @typescript-eslint/require-await
   async check(file: FileContext): Promise<Result[]> {
     const imports = this.getFileImports(file.source);
     return this.checkImportPaths(file.packageRoot, file.filename, imports);

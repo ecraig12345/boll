@@ -11,11 +11,11 @@ import { RuleRegistry } from "../rule-registry";
 export const test: any = baretest("Config");
 
 class FakeRule implements PackageRule {
-  name: string = "fakerule";
+  name = "fakerule";
 
-  constructor(public options: {} = {}) {}
+  constructor(public options: any = {}) {}
 
-  async check(file: any): Promise<Result[]> {
+  async check(): Promise<Result[]> {
     throw new Error("Method not implemented.");
   }
 }

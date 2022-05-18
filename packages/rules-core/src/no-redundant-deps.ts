@@ -13,6 +13,7 @@ export class NoRedundantDepsRule implements PackageRule {
     return ruleName;
   }
 
+  // eslint-disable-next-line @typescript-eslint/require-await
   async check(file: FileContext): Promise<Result[]> {
     if (basename(file.filename) !== "package.json") {
       return [new Success(ruleName)];

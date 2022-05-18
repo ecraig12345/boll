@@ -1,7 +1,7 @@
 import * as assert from "assert";
 import baretest from "baretest";
 import { EnforceRationale } from "../enforce-rationale";
-import { asBollDirectory, getSourceFile, NullLogger, Result, ResultStatus } from "@boll/core";
+import { asBollDirectory, getSourceFile, Result, ResultStatus } from "@boll/core";
 import { inFixtureDir } from "@boll/test-internal";
 
 export const test: any = baretest("Enforce Rationale");

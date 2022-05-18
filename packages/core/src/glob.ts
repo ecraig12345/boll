@@ -3,7 +3,7 @@ import { asBollFile, BollFile } from "./boll-file";
 import { FileGlob, FileGlobOptions } from "./types";
 
 async function findFiles(pattern: string | string[], include: string[], exclude: string[]): Promise<BollFile[]> {
-  let paths = await fg(pattern, { ignore: [...exclude, "./**/node_modules/**"] });
+  const paths = await fg(pattern, { ignore: [...exclude, "./**/node_modules/**"] });
   const inclusions = await fg(include);
   paths.push(...inclusions.filter(i => !paths.includes(i)));
   return paths.map(asBollFile);

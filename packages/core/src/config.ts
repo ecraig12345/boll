@@ -1,4 +1,4 @@
-import { ConfigDefinition, FileGlob, PackageMetaRule, PackageRule } from "./types";
+import { ConfigDefinition, PackageMetaRule, PackageRule } from "./types";
 import { ConfigRegistry } from "./config-registry";
 import { Logger } from "./logger";
 import { RuleRegistry } from "./rule-registry";
@@ -77,37 +77,24 @@ export class Config {
     childConfiguration: ConfigDefinition
   ): ConfigDefinition {
     const obj: ConfigDefinition = {
+      exclude: [...(parentConfiguration.exclude || []), ...(childConfiguration.exclude || [])],
+      ruleSets: [...(parentConfiguration.ruleSets || []), ...(childConfiguration.ruleSets || [])],
       configuration: {
-        rules: {},
-        ruleSets: {}
+        rules: {
+          ...parentConfiguration.configuration?.rules,
+          ...childConfiguration.configuration?.rules
+        },
+        ruleSets: {
+          ...parentConfiguration.configuration?.ruleSets,
+          ...childConfiguration.configuration?.ruleSets
+        }
       }
     };
 
     if (childConfiguration.name) {
       obj.name = childConfiguration.name;
     }
-    obj.ruleSets = [...(parentConfiguration.ruleSets || []), ...(childConfiguration.ruleSets || [])];
-    obj.exclude = [...(parentConfiguration.exclude || []), ...(childConfiguration.exclude || [])];
-    if (parentConfiguration.configuration && parentConfiguration.configuration.ruleSets) {
-      Object.keys(parentConfiguration.configuration.ruleSets).forEach(k => {
-        (obj.configuration!.ruleSets! as any)[k] = (parentConfiguration.configuration!.ruleSets as any)[k];
-      });
-    }
-    if (parentConfiguration.configuration && parentConfiguration.configuration.rules) {
-      Object.keys(parentConfiguration.configuration.rules).forEach(k => {
-        (obj.configuration!.rules! as any)[k] = (parentConfiguration.configuration!.rules as any)[k];
-      });
-    }
-    if (childConfiguration.configuration && childConfiguration.configuration.ruleSets) {
-      Object.keys(childConfiguration.configuration.ruleSets).forEach(k => {
-        (obj.configuration!.ruleSets! as any)[k] = (childConfiguration.configuration!.ruleSets as any)[k];
-      });
-    }
-    if (childConfiguration.configuration && childConfiguration.configuration.rules) {
-      Object.keys(childConfiguration.configuration.rules).forEach(k => {
-        (obj.configuration!.rules! as any)[k] = (childConfiguration.configuration!.rules as any)[k];
-      });
-    }
+
     return obj;
   }
 }

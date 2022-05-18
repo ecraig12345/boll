@@ -1,5 +1,5 @@
 import { extname } from "path";
-import { PackageRule, FileContext, asBollLineNumber, Result, Success, Failure, BollDirectory } from "@boll/core";
+import { PackageRule, FileContext, asBollLineNumber, Result, Failure, BollDirectory } from "@boll/core";
 import * as path from "path";
 
 export interface PackageConsistencyOptions {
@@ -31,6 +31,7 @@ export class PackageConsistency implements PackageRule {
     return ruleName;
   }
 
+  // eslint-disable-next-line @typescript-eslint/require-await
   async check(file: FileContext): Promise<Result[]> {
     if (extname(file.filename) !== ".json") {
       return [];

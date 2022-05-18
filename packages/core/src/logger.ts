@@ -20,5 +20,7 @@ export class Logger {
 }
 
 export const DefaultLogger = new Logger(console.log, console.warn, console.error);
-const empty = (a: string) => {};
+const empty = () => {
+  // no-op
+};
 export const NullLogger = new Logger(empty, empty, empty);

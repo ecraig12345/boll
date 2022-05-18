@@ -38,6 +38,7 @@ export class UnusedDependencyDetector implements PackageMetaRule {
     return ruleName;
   }
 
+  // eslint-disable-next-line @typescript-eslint/require-await
   async check(files: FileContext[]): Promise<Result[]> {
     return this.checkPackageImports(
       files.map(f => this.getFilePackageImports(f.source)),

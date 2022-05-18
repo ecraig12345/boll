@@ -5,7 +5,7 @@ import { Result } from "./result-set";
 export interface CheckConfiguration {
   rule: string;
   severity?: "warn" | "error";
-  options?: {};
+  options?: any;
 }
 
 export interface Checks {
@@ -28,8 +28,8 @@ export interface ConfigDefinition {
   ruleSets?: RuleSetConfiguration[];
   excludeGitControlledFiles?: boolean;
   configuration?: {
-    rules?: {};
-    ruleSets?: {};
+    rules?: Record<string, any>;
+    ruleSets?: Record<string, any>;
   };
 }
 
