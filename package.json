@@ -12,12 +12,20 @@
     "docs": "lage docs",
     "format": "./node_modules/.bin/prettier --write './**/src/**/*'",
     "format:check": "./node_modules/.bin/prettier --check './**/src/**/*'",
+    "prepare": "husky install",
     "release": "beachball publish",
     "test": "lage test"
   },
   "devDependencies": {
     "beachball": "^2.22.2",
-    "lage": "^0.41.0"
+    "husky": "^8.0.1",
+    "lage": "^0.41.0",
+    "lint-staged": "^12.4.1"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --write"
+    ]
   },
   "workspaces": {
     "packages": [
