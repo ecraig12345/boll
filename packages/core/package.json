@@ -6,8 +6,10 @@
   "dependencies": {
     "fast-glob": "^3.2.4",
     "graceful-fs": "4.2.4",
-    "parse-gitignore": "^1.0.1",
-    "typescript": "^3.9.7"
+    "parse-gitignore": "^1.0.1"
+  },
+  "peerDependencies": {
+    "typescript": ">=4.3.0"
   },
   "description": "> TODO: description",
   "devDependencies": {
@@ -31,7 +33,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf ./dist",
-    "docs": "typedoc --mode file --out ./apidocs --theme markdown ./src",
+    "docs": "typedoc --out ./apidocs --theme markdown ./src",
     "test": "node dist/tests/all.test.js"
   },
   "version": "2.0.0"

@@ -9,8 +9,10 @@
   "dependencies": {
     "@boll/core": "2.0.0",
     "argparse": "^1.0.10",
-    "typescript": "^3.9.7",
     "yaml": "^1.10.0"
+  },
+  "peerDependencies": {
+    "typescript": ">=4.3.0"
   },
   "description": "> TODO: description",
   "devDependencies": {
@@ -35,7 +37,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf ./dist",
-    "docs": "typedoc --mode file --out ./apidocs --theme markdown ./src",
+    "docs": "typedoc --out ./apidocs --theme markdown ./src/*.ts",
     "test": "node dist/tests/all.test.js"
   },
   "version": "1.2.1"

@@ -4,8 +4,10 @@
     "url": "https://github.com/microsoft/boll/issues"
   },
   "dependencies": {
-    "@boll/core": "2.0.0",
-    "typescript": "^3.9.7"
+    "@boll/core": "2.0.0"
+  },
+  "peerDependencies": {
+    "typescript": ">=4.3.0"
   },
   "description": "@boll rules for typescript source files",
   "devDependencies": {
@@ -29,7 +31,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf ./dist",
-    "docs": "typedoc --mode file --out ./apidocs --theme markdown ./src",
+    "docs": "typedoc --out ./apidocs --theme markdown ./src",
     "test": "node dist/tests/all.test.js"
   },
   "version": "1.0.0"
