@@ -22,11 +22,13 @@
     "test": "node dist/tests/all.test.js"
   },
   "dependencies": {
-    "@boll/core": "2.0.0",
-    "eslint": "^7.8.1"
+    "@boll/core": "2.0.0"
   },
   "devDependencies": {
     "@boll/test-internal": "*"
+  },
+  "peerDependencies": {
+    "eslint": "^7.0.0 || ^8.0.0"
   },
   "publishConfig": {
     "access": "public"
