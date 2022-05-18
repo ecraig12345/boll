@@ -6,6 +6,8 @@ name: PR
 on:
   pull_request:
     branches: [main]
+  push:
+    branches: [dev]
 
 jobs:
   build:
@@ -13,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [14.x]
 
     steps:
       - uses: actions/checkout@v2
