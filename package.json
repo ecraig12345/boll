@@ -30,7 +30,7 @@
     "husky": "^8.0.1",
     "lage": "^0.41.0",
     "lint-staged": "^12.4.1",
-    "prettier": "^2.0.5",
+    "prettier": "2.6.2",
     "rimraf": "^3.0.2",
     "ts-node-dev": "^1.0.0-pre.58",
     "typedoc": "^0.22.15",
