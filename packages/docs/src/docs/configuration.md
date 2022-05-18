@@ -12,10 +12,10 @@ an `extends` key.
 
 ```js
 "use strict";
-const { bootstrapRecommendedConfiguration } = require('@boll/recommended');
+const { bootstrapRecommendedConfiguration } = require("@boll/recommended");
 bootstrapRecommendedConfiguration();
 module.exports = {
-    extends: "boll:recommended"
+  extends: "boll:recommended"
 };
 ```
 
@@ -35,10 +35,12 @@ const { SrcDetector } = require("@boll/rules-typescript");
 RuleRegistryInstance.register("SrcDetector", () => new SrcDetector());
 
 module.exports = {
-    ruleSets: [{
-        fileLocator: new TypescriptSourceGlob(),
-        checks: [{rule: "SrcDetector"}]
-    }]
+  ruleSets: [
+    {
+      fileLocator: new TypescriptSourceGlob(),
+      checks: [{ rule: "SrcDetector" }]
+    }
+  ]
 };
 ```
 
