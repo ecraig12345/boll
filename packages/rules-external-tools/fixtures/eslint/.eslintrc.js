@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   rules: {
     "rule-one": "error",
     "rule-two": "warn",
